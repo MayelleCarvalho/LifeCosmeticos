@@ -15,4 +15,7 @@ class Cliente(models.Model):
     sexo = models.CharField(max_length=1, choices=SEXO_CHOICES, null=False, blank=False)
     telefone = models.CharField(max_length=255)
 
-    usuario = models.OneToOneField(User, related_name='cliente')
+    usuario = models.OneToOneField(User, related_name='cliente', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nome
