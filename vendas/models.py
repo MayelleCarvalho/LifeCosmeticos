@@ -17,3 +17,14 @@ class Venda(models.Model):
     produtos = models.ManyToManyField(Produto, through= 'item_venda')
 
 
+class ItemVenda(models.Model):
+
+    valor_total_item = models.FloatField()
+    qtd_item = models.IntegerField()
+    item = models.ForeignKey(Produto, on_delete=models.CASCADE, related_name='produto')
+    venda = models.ForeignKey(Venda, on_delete=models.CASCADE, related_name='venda')
+
+
+
+
+
