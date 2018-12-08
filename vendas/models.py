@@ -1,6 +1,9 @@
 from django.db import models
 
 # Create your models here.
+from perfis.models import Cliente
+
+
 class Produto(models.Model):
 
     img_produto = models.FileField()
@@ -15,6 +18,7 @@ class Venda(models.Model):
     hora_venda = models.TimeField()
     valor_total = models.FloatField()
     produtos = models.ManyToManyField(Produto, through= 'item_venda')
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='cliente')
 
 
 class ItemVenda(models.Model):
