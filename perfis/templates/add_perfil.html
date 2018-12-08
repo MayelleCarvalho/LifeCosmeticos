@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block nav %}
+<br>
+{% endblock %}
+
+{% block center %}
+
+    <h3>Crie seu Perfil:</h3>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+
+        <center>
+            <br>
+            <input type="submit" class="btn">
+            <input type="reset" class="btn red">
+        </center>
+    </form>
+
+{% endblock %}
+
+{% block aside %}
+<br>
+{% endblock %}
