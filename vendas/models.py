@@ -17,7 +17,7 @@ class Venda(models.Model):
     data_venda = models.DateField()
     hora_venda = models.TimeField()
     valor_total = models.FloatField()
-    produtos = models.ManyToManyField(Produto, through= 'item_venda')
+    produtos = models.ManyToManyField(Produto, through= 'ItemVenda')
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='cliente')
 
 
