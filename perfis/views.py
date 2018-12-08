@@ -1,7 +1,9 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 # Create your views here.
 from perfis.forms import ClienteForm
+from perfis.models import Cliente
 
 
 def index(request):
@@ -21,3 +23,8 @@ def add_perfil(request):
         form = ClienteForm()
         return render(request, 'add_perfil.html',
                       {'form': form})
+
+
+def get_perfil_logado():
+    perfil = Cliente.objects.get(id=1)
+    return perfil

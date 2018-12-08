@@ -9,7 +9,5 @@ class ClienteForm(ModelForm):
 
     class Meta:
         model = Cliente
-        fields = ['nome', 'endereco', 'sexo', 'telefone', 'usuario']
-        widgets = {'sexo': forms.Select({'class': 'browser-default'}),
-                   'usuario': forms.Select({'class': 'browser-default'})}
-
+        fields = ['nome', 'endereco', 'sexo', 'telefone']
+        widgets = {'sexo': forms.Select({'class': 'browser-default'})}
