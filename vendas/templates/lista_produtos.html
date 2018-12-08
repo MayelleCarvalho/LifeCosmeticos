@@ -1,28 +1,29 @@
-<!DOCTYPE html>
-<html lang="pt">
-    <head>
-        <meta charset="utf-8">
-        <title>Produtos</title>
-    </head>
-    <body>
-        <form>
-            <h3 align="center" class="text-muted">Lista de Produtos</h3>
-            <hr>
-            <div class="card-deck">
-                {% for produto in produtos %}
-                    <div class="card">
-                        <img class="card-img-top" width="100%" src="static/img/crememaos.jpg" alt="Imagem do produto">
-                        <div class="card-body">
-                            <h3 class="card-title">{{ produto.descricao }}</h3>
-                            <h4 class="card-text">Por apenas: R$ {{ produto.valor_unit }}</h4>
-                        </div>
-                        <div class="card-footer text-muted">
-                            <p>Corra e garanta o seu produto!!! Disponível {{ produto.qtd_estoque }} unidades em estoque.</p>
-                        </div>
-                    </div>
-                    <hr>
-                {% endfor %}
+{% extends 'base.html' %}
+
+{% block nav %}
+<br>
+{% endblock %}
+
+{% block center %}
+    <h3 align="center" class="text-muted">Lista de Produtos</h3>
+    <hr>
+    <div class="card-deck">
+        {% for produto in produtos %}
+            <div class="card">
+                <img class="card-img-top" width="100%" src="static/img/crememaos.jpg" alt="Imagem do produto">
+                <div class="card-body">
+                    <h3 class="card-title">{{ produto.descricao }}</h3>
+                    <h4 class="card-text">Por apenas: R$ {{ produto.valor_unit }}</h4>
+                </div>
+                <div class="card-footer text-muted">
+                    <p>Corra e garanta o seu produto!!! Disponível {{ produto.qtd_estoque }} unidades em estoque.</p>
+                </div>
             </div>
-        </form>
-    </body>
-</html>
+            <hr>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block aside %}
+<br>
+{% endblock %}
