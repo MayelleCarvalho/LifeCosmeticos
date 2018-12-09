@@ -10,7 +10,7 @@ def add_produtos(request):
     if request.method == "POST":
         form = ProdutoForm(request.POST)
         if form.is_valid():
-            form.save(commit=False)
+            form.save()
             return redirect('index')
         else:
             print(form.errors)
@@ -36,8 +36,17 @@ def detalhar_produto(request, produto_id):
 
 def editar_produto(request, produto_id):
 
-    produto = Produto.objects.get(id = produto_id)
-    form = ProdutoForm(instance=produto)
+    produto = Produto.objects.get(id=produto_id)
 
-    return render(request, "editar_produto.html",
-                  {'form': form})
+    if request.method == "POST":
+        form = ProdutoForm(request.POST, instance=produto)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+        else:
+            print(form.errors)
+    else:
+        form = ProdutoForm(instance=produto)
+
+        return render(request, "editar_produto.html",
+                      {'form': form})
