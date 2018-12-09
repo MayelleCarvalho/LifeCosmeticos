@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="card-content">
-                        <p>{{ produto.descricao }}</p>
+                        <p> <a href="{% url 'detalhar_produto' produto.id %}">{{ produto.descricao }}</a></p>
                     </div>
 
                     <div class="card-action">
@@ -47,7 +47,7 @@
     </div>
 
     <div class="fixed-action-btn horizontal" style="bottom: 20px; right: 20px;">
-        <a href="{% url 'add_produtos' %}" class="btn-floating btn-large red">
+        <a href="{% url 'add_produtos' %}" class="btn-floating btn-large blue">
             <i class="material-icons">add</i>
         </a>
     </div>
