@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block nav %}
+    <br>
+{% endblock %}
+
+{% block center %}
+
+    <div class="row">
+                <div class="col s12 m3">
+            <br>
+        </div>
+
+            <div class="col s12 m6">
+                <div class="card ">
+                    <div class="card-image">
+                        <img src="https://araujo.vteximg.com.br/arquivos/ids/3732870-1000-1000/07891010877934.jpg?v=635993315630970000">
+                        <span class="card-title black-text">R$ {{ produto.valor_unit }}</span>
+                    </div>
+
+                    <div class="card-content">
+                        <p> <h4>{{ produto.descricao }}</h4> </p>
+                        <p> <h5>{{ produto.categoria }}</h5> </p>
+                    </div>
+                </div>
+            </div>
+                <div class="col s12 m3">
+            <br>
+        </div>
+
+    </div>
+
+    <div class="fixed-action-btn horizontal" style="bottom: 20px; right: 20px;">
+        <a href="{% url 'editar_produto' produto.id %}" class="btn-floating btn-large orange">
+            <i class="material-icons">edit</i>
+        </a>
+        <a href="{% url 'add_produtos' %}" class="btn-floating btn-large red">
+            <i class="material-icons">delete</i>
+        </a>
+    </div>
+{% endblock %}
+
+{% block aside %}
+<br>
+{% endblock %}

@@ -15,15 +15,11 @@
 
     <div class="collection">
         <a href="#!" class="collection-item active">Categorias</a>
-        <a href="#!" class="collection-item">Hidratantes</a>
-        <a href="#!" class="collection-item">Perfumes e Antitranspirantes</a>
-        <a href="#!" class="collection-item">Bases e Auto Emulsionante</a>
-        <a href="#!" class="collection-item">Pés e Unhas </a>
-        <a href="#!" class="collection-item">Paletas de Cores</a>
-        <a href="#!" class="collection-item">Esfoliantes Naturais</a>
-        <a href="#!" class="collection-item">Ativos e Especiarias</a>
-        <a href="#!" class="collection-item">Óleos essenciais</a>
+        {% for categoria in categorias %}
 
+            <a href="#!" class="collection-item">{{ categoria }}</a>
+
+        {% endfor %}
     </div>
 {% endblock %}
 
@@ -39,7 +35,7 @@
                     </div>
 
                     <div class="card-content">
-                        <p>{{ produto.descricao }}</p>
+                        <p> <a href="{% url 'detalhar_produto' produto.id %}">{{ produto.descricao }}</a></p>
                     </div>
 
                     <div class="card-action">
@@ -51,7 +47,7 @@
     </div>
 
     <div class="fixed-action-btn horizontal" style="bottom: 20px; right: 20px;">
-        <a class="btn-floating btn-large red">
+        <a href="{% url 'add_produtos' %}" class="btn-floating btn-large blue">
             <i class="material-icons">add</i>
         </a>
     </div>
