@@ -25,3 +25,19 @@ def lista_produtos(request):
     produtos = Produto.objects.all()
     categorias = Categoria.objects.all()
     return render(request, "lista_produtos.html", {'produtos' : produtos, 'categorias': categorias})
+
+
+def detalhar_produto(request, produto_id):
+
+    produto = Produto.objects.get(id=produto_id)
+    return render(request, 'detalhar_produto.html',
+                  {'produto': produto})
+
+
+def editar_produto(request, produto_id):
+
+    produto = Produto.objects.get(id = produto_id)
+    form = ProdutoForm(instance=produto)
+
+    return render(request, "editar_produto.html",
+                  {'form': form})
