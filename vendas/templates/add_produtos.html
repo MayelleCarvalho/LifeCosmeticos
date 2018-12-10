@@ -8,7 +8,7 @@
 
     <h3>Cadastre um produto:</h3>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}
 
