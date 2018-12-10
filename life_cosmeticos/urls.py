@@ -25,6 +25,9 @@ urlpatterns = [
     path('add_produto/', vendas.views.add_produtos, name='add_produtos'),
     path('add_perfil/', views.add_perfil, name='add_perfil'),
     path('produtos/', vendas.views.lista_produtos, name= 'lista_produtos'),
-    path('produto/<int:produto_id>/', vendas.views.detalhar_produto, name= 'detalhar_produto'),
-    path('produto/<int:produto_id>/editar', vendas.views.editar_produto, name= 'editar_produto'),
+    path('produtos/venda/<int:produto_id>', vendas.views.realizar_venda, name= 'realizar_venda'),
+    path('produtos/<int:produto_id>/venda/<int:venda_id>/', vendas.views.adicionar_item_venda, name= 'adicionar_item_venda'),
+    path('produtos/categoria/<int:categoria_produto>/', vendas.views.filtrar_produtos, name= 'filtrar_produto'),
+    path('produtos/<int:produto_id>/', vendas.views.detalhar_produto, name= 'detalhar_produto'),
+    path('produtos/<int:produto_id>/editar', vendas.views.editar_produto, name= 'editar_produto'),
 ]
