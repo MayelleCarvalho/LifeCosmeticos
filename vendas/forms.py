@@ -7,7 +7,7 @@ class ProdutoForm(ModelForm):
 
     class Meta:
         model = Produto
-        fields = ['descricao', 'categoria', 'valor_unit', 'qtd_estoque']
+        fields = ['descricao', 'categoria', 'valor_unit', 'img_produto', 'qtd_estoque']
         widgets = {'categoria': forms.Select({'class': 'browser-default'})}
 
     def clean(self):
