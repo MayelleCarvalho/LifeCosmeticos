@@ -11,7 +11,7 @@ from perfis.views import *
 def add_produtos(request):
 
     if request.method == "POST":
-        form = ProdutoForm(request.POST)
+        form = ProdutoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('index')
@@ -29,6 +29,12 @@ def lista_produtos(request):
     produtos = Produto.objects.all()
     categorias = Categoria.objects.all()
     return render(request, "lista_produtos.html", {'produtos' : produtos, 'categorias': categorias})
+
+
+def lista_compras(request):
+
+    vendas = Venda.objects.filter(cliente=get_perfil_logado())
+    return render(request, "lista_compras.html", {'vendas' : vendas})
 
 
 def detalhar_produto(request, produto_id):
@@ -50,7 +56,7 @@ def editar_produto(request, produto_id):
     produto = Produto.objects.get(id=produto_id)
 
     if request.method == "POST":
-        form = ProdutoForm(request.POST, instance=produto)
+        form = ProdutoForm(request.POST, request.FILES, instance=produto)
         if form.is_valid():
             form.save()
             return redirect('index')
