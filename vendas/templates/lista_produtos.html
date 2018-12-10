@@ -1,10 +1,6 @@
 {% extends 'base.html' %}
 
 {% block nav %}
-<script>
-      Materialize.toast('I am a toast!', 4000)
-</script>
-
     <div class="card" style="padding:10%">
         <h6 class="black-text">Filtre sua busca</h6>
         <br>
@@ -31,21 +27,27 @@
     <div class="row">
         {% for produto in produtos %}
             <div class="col s12 m4">
-                <div class="card medium">
+                <div class="card large">
                     <div class="card-image">
-                        <img src="https://araujo.vteximg.com.br/arquivos/ids/3732870-1000-1000/07891010877934.jpg?v=635993315630970000">
-                        <span class="card-title black-text">R$ {{ produto.valor_unit }}</span>
+                        <img src="{{ produto.img_produto.url }}">
                     </div>
 
                     <div class="card-content">
+                        <span class="card-title black-text">R$ {{ produto.valor_unit }}</span>
+                        <br>
+
                         <a href="{% url 'detalhar_produto' produto.id %}">{{ produto.descricao }}</a>
                     </div>
 
                     <div class="card-action">
                         {% if venda %}
-                            <a href="{% url 'adicionar_item_venda' produto.id venda.id %}">Selecionar Item</a>
+                            <a class="btn orange"  href="{% url 'adicionar_item_venda' produto.id venda.id %}">Adicionar
+                                <i class="material-icons right">shopping_cart</i>
+                            </a>
                         {% else %}
-                            <a href="{% url 'realizar_venda' produto.id %}">Selecionar Item</a>
+                            <a class="btn orange" href="{% url 'realizar_venda' produto.id %}">Adicionar
+                                <i class="material-icons right">shopping_cart</i>
+                            </a>
                         {% endif %}
                     </div>
                 </div>
@@ -71,8 +73,6 @@
                         {% endfor %}
                         <a href="" class="grey lighten-2 collection-item">Valor total: R$ {{ venda.valor_total}}</a>
                         <a href="{% url 'index' %}" class="btn tean lighten-2 collection-item">Comprar</a>
-                          <a class="btn" onclick="Materialize.toast('I am a toast', 4000)">Toast!</a>
-
                     </div>
             </div>
         </div>

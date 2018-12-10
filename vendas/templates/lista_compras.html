@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block nav %}
+    <br>
+{% endblock %}
+
+{% block center %}
+
+    <div class="row">
+        {% for venda in vendas %}
+            <div class="col s12 m6">
+                <div class="card medium">
+                    <div class="card-image">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAMAAAAPdrEwAAAAkFBMVEX///9mdX9gcHopLzPP2eDM1t2eqrK5v8Ph6O1dbXhqeYP5+frT3eRjcn0iKS3J09oTHCFRY2/n7vOpra50gYo8QUWlp6kYICXDyMsAAAB9ipMADRW5xMsNFhxFU1zn6Ojc3+GuucEyOj9eY2eRlpqSnqdGS06FkptVXWKcnqCEhogABA61uLlOUlXS1diao6jrozwJAAAEWElEQVRYhe1YbXOiPBSViNLIi6BWqNRF26XurlX//7/b3JsAgSaBoeSZeWb2fDLDySG5LyeR2ewf/mv4MiYVvqxklBOKX4gjg14mU/ZXThvJZNKzC+1IbyaT9g9JDXgLvU8mLcNjcSeeFek7WzZ5WJEuEscJD1akZ0zaWU3aNjWgEmlhRboM7ZUIyyM9W5HGEimtSBfQNCsr0v7ELiLjwPKYWCoRYtVFwtIbjZNeGkrECeloJJlWGlzkOwgN5fVNaWenl96F8G4igGzSwDjGmYaj9QF5vCwFwK5IuawBs1fNEOqpGV/YU7LUS4OLhGXgIgJg07MYsTFKLerhGddRkdHb9GnEEgkPwQLhwrLI0l0IuCi9rodLeFyKxwG0Gz3ppdFFSCDNDUudNK6zeTNELzGcI3gvoWLPwSvfgy4guM5X8XgNiaB6Ze4ideYepJ23Thoxy3JOTQXCS8TRVZtx6JgLhJfIaJgKRLjIaOmTSdpP5F1CcJvm7ESg/RAfmS8aIB2WUoeFB00aIeNN54K2wUEAckUFZyr1W6f4eK9WTKzTnsv5Q+5AmODsXGXLBNgCr3Jnbs3S3EWEmktlsY40Jnwtdaa5QGazk9yBAUSXrJUBWeCOKmKfgwDQRcIqOTs5qe00oqXu5M40OQiA/7vRNpxuhL/NyrxERqGvQISLjIHZQQAZ1UbEPOgrEF4iTbL4clRpxLJuZfHUJ40usqr8HgVUxbfGl7aKtP+vCp5hohXcXSi1nNwyvFHFUbfGQa+ycBHej2gU5Ox+kXaFvfDBEAcBoB0she20BlJAAgWrXzqjkpO2bFVOY8tSDwMchOHcupy1/F6ut9YDPM1PPcJ3OvYE63OQb5y6xjsICzO/BJNpb+0AnzdsuJ32vwYAncnO311qTRnPrgHtOgLQK0N6agTww4Kdb0+46p67xEhYjDXe9yxFBOs6saKN1xuH7pbQXtnnluEzM3Rg5gHFayiG7x1ewq2SEvIjOsYMx+gHUVtKQ0lrislIHuJPOnmL5gLRm/pioqIYi8Cj+H+nnoUzVU5L5y3QfulZ8UhoKCTTVLwi7MaEqCk9zsrUf0U46/3nz3ecGf3qJjPjlBgocUPp/Wzlv2D87huGO0b02j2cihQoz2ugrJ+Bkg76GvYb5r09bZ4YNk9vMO93lxJDEARlA9Jxl6LEO6OmD5zGJu7Zi6L3DgXiEe9rSgwRGSING7w+1bjC1jsU2FcaVIwAlp0PUPYhBPmmmrc5Qng6wb5iyGrAjBcrq3bTgavmsd5WgdyqAnmDWJspSmCFzAOe/tNcVSGQuHlUFRHw4/0Q6QLr+tmFonWxaF+6RVvkSFkAZfEBlOOwr7x/cE1XaLUca/bPV0paU67YMV8pSvjc1CqDiLr1AYjalGiYMttvJFlfpOzhYi5T5sM/ehe3XMyM8g/1tOKjl6LB5y3P4zjPb59ainfL2TFzzD/0FA2KbL/PzMspvP2+30n/J/gLZZxkFvFZtv4AAAAASUVORK5CYII=">
+                        <span class="card-title black-text">R$ {{ venda.valor_total }}</span>
+                    </div>
+
+                    <center class="collection">
+                        {% for produto in venda.produtos.all %}
+                            <a href="" class="collection-item">{{ produto.descricao }} ... R$ {{ produto.valor_unit }}</a>
+                        {% endfor %}
+
+                    </center>
+                    <div class="card-action">
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="fixed-action-btn horizontal" style="bottom: 20px; right: 20px;">
+        <a href="{% url 'add_produtos' %}" class="btn-floating btn-large blue">
+            <i class="material-icons">add</i>
+        </a>
+    </div>
+{% endblock %}
+
+{% block aside %}
+    <br>
+{% endblock %}
